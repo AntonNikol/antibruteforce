@@ -41,12 +41,6 @@ run: build
 stop:
 	docker-compose down
 
-install-lint-deps:
-	(which golangci-lint > /dev/null) || curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(shell go env GOPATH)/bin v1.50.1
-
-lint: install-lint-deps
-	golangci-lint run ./...
-
 .PHONY: cover
 cover:
 	go test -short -count=1 -race -coverprofile=coverage.out ./...
@@ -57,6 +51,12 @@ cover:
 test:
 	go test -race ./...
 
+.PHONY: format-go
 format-go:
 	golangci-lint cache clean
 	golangci-lint run --fix ./...
+
+.PHONY: lint
+lint:
+	go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest; \
+    golangci-lint run
