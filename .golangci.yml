@@ -1,0 +1,129 @@
+run:
+  tests: true
+  build-tags:
+    - bench
+    - !bench
+
+linters-settings:
+  funlen:
+    lines: 150
+    statements: 80
+  depguard:
+    rules:
+      main:
+        files:
+          - $all
+          - "!$test"
+        allow:
+          - $gostd
+          - github.com/stretchr/testify/require
+          - github.com/google/uuid
+          - github.com/streadway/amqp
+          - github.com/jmoiron/sqlx
+          - github.com/pelletier/go-toml
+          - github.com/grpc-ecosystem/grpc-gateway/v2/runtime
+          - github.com/lib/pq
+          - github.com/AntonNikol/anti-bruteforce/internal/controller/grpcapi/whitelistpb
+          - github.com/AntonNikol/anti-bruteforce/internal/controller/grpcapi/whitelistpb
+          - github.com/AntonNikol/anti-bruteforce/internal/controller/grpcapi/bucketpb
+          - github.com/AntonNikol/anti-bruteforce/internal/controller/grpcapi/blacklistpb
+          - github.com/AntonNikol/anti-bruteforce/internal/controller/grpcapi/authorizationpb
+          - github.com/AntonNikol/anti-bruteforce/internal/controller/grpcapi/bucketp
+          - github.com/AntonNikol/anti-bruteforce/internal/controller/grpcapi/blacklistpb
+          - github.com/AntonNikol/anti-bruteforce/internal/controller/httpapi/handlers
+          - github.com/AntonNikol/anti-bruteforce/internal/controller/grpcapi/authorizationpb
+          - github.com/json-iterator/go
+          - github.com/julienschmidt/httprouter
+          - github.com/json-iterator/go
+          - github.com/julienschmidt/httprouter
+          - github.com/json-iterator/go
+          - github.com/AntonNikol/anti-bruteforce/internal/app
+          - github.com/AntonNikol/anti-bruteforce/internal/store/postgressql/adapters
+          - github.com/AntonNikol/anti-bruteforce/internal/controller/httpapi
+          - github.com/AntonNikol/anti-bruteforce/internal/controller/grpcapi
+          - github.com/AntonNikol/anti-bruteforce/internal/controller/clinterface
+          - github.com/AntonNikol/anti-bruteforce/internal/config
+          - github.com/AntonNikol/anti-bruteforce/internal/store/postgressql/client
+          - github.com/AntonNikol/anti-bruteforce/internal/domain/service
+          - github.com/AntonNikol/anti-bruteforce/internal/domain/entity
+          - github.com/c-bata/go-prompt
+          - github.com/kelseyhightower/envconfig
+      test:
+        files:
+          - "$test"
+        allow:
+          - $gostd
+          - github.com/stretchr/testify/assert
+          - github.com/AntonNikol/anti-bruteforce/internal/domain/service
+          - github.com/julienschmidt/httprouter
+          - github.com/json-iterator/go
+          - github.com/stretchr/testify/require
+          - github.com/stretchr/testify/assert
+          - github.com/AntonNikol/anti-bruteforce/internal/store/postgressql/adapters/mocks
+          - github.com/AntonNikol/anti-bruteforce/internal/domain/service
+          - github.com/julienschmidt/httprouter
+          - github.com/json-iterator/go
+          - github.com/golang/mock/gomock
+          - github.com/stretchr/testify/require
+          - github.com/AntonNikol/anti-bruteforce/internal/store/postgressql/adapters/mocks
+          - github.com/AntonNikol/anti-bruteforce/internal/domain/service
+          - github.com/AntonNikol/anti-bruteforce/internal/domain/entity
+          - github.com/AntonNikol/anti-bruteforce/internal/config
+          - github.com/julienschmidt/httprouter
+          - github.com/golang/mock/gomock
+issues:
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - errcheck
+        - dupl
+        - gocyclo
+        - gosec
+
+linters:
+  disable-all: true
+  enable:
+    - asciicheck
+    - bodyclose
+    - depguard
+    - dogsled
+    - dupl
+    - durationcheck
+    - errorlint
+    - exhaustive
+    - exportloopref
+    - funlen
+    - gci
+    - gocognit
+    - goconst
+    - gocritic
+    - gocyclo
+    - godot
+    - gofmt
+    - gofumpt
+    - goheader
+    - goprintffuncname
+    - gosec
+    - gosimple
+    - govet
+    - importas
+    - ineffassign
+    - lll
+    - makezero
+    - misspell
+    - nestif
+    - nilerr
+    - noctx
+    - nolintlint
+    - prealloc
+    - predeclared
+    - revive
+    - staticcheck
+    - stylecheck
+    - tagliatelle
+    - thelper
+    - typecheck
+    - unconvert
+    - unparam
+    - unused
+    - whitespace
